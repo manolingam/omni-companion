@@ -7,15 +7,21 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
+import isURL from 'validator/lib/isURL';
+import Microlink from '@microlink/react';
+
 import InfoObject from '../infoObject/infoObject.component';
+
+import './home.style.css';
 
 class Home extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			address: '',
+			data: '',
 			web3: '',
-			warning: false
+			warning: false,
+			urls: []
 		};
 	}
 
@@ -33,22 +39,20 @@ class Home extends React.Component {
 
 	render() {
 		let address = '';
+		let URL = '';
 
 		return (
 			<div>
-				<Jumbotron
-					fluid
-					style={{ paddingTop: '10px', paddingBottom: '10px' }}
-				>
+				<Jumbotron fluid>
 					<Container>
 						<h3>
-							Omni Companion<span> v0.1.0</span>
+							Omni Companion<span> v0.2.0</span>
 						</h3>
 						<p>The Official Omni Wallet companion app</p>
 						<InputGroup className='mb-3'>
 							<FormControl
 								placeholder="What's your wallet address?"
-								aria-label="Recipient's username"
+								aria-label="Recipient's address"
 								aria-describedby='basic-addon2'
 								onChange={e => (address = e.target.value)}
 							/>
@@ -62,13 +66,13 @@ class Home extends React.Component {
 											)
 										) {
 											this.setState({
-												address: address,
+												data: address,
 												warning: false
 											});
 										} else {
 											this.setState({
 												warning: true,
-												address: ''
+												data: ''
 											});
 										}
 									}}
@@ -77,15 +81,50 @@ class Home extends React.Component {
 								</Button>
 							</InputGroup.Append>
 						</InputGroup>
-						<p style={{ textAlign: 'center' }}>
-							Powered by Ethereum
-						</p>
+						<InputGroup className='mb-3'>
+							<FormControl
+								placeholder="What's the URL?"
+								aria-label='URL'
+								aria-describedby='basic-addon2'
+								onChange={e => (URL = e.target.value)}
+								id='url'
+							/>
+							<InputGroup.Append>
+								<Button
+									variant='outline-secondary'
+									onClick={() => {
+										if (isURL(URL)) {
+											let urls = this.state.urls;
+											if (!urls.includes(URL)) {
+												urls.push(URL);
+												this.setState({
+													urls: urls
+												});
+											}
+										}
+									}}
+								>
+									Add
+								</Button>
+							</InputGroup.Append>
+						</InputGroup>
+						<p>Powered by Ethereum</p>
 					</Container>
 				</Jumbotron>
-				<InfoObject
-					address={this.state.address}
-					warning={this.state.warning}
-				/>
+
+				<div className='main-body'>
+					<InfoObject
+						data={this.state.data}
+						warning={this.state.warning}
+					/>
+
+					<div className='microlink'>
+						<h4>Important Links..</h4>
+						{this.state.urls.map(url => {
+							return <Microlink url={url} />;
+						})}
+					</div>
+				</div>
 			</div>
 		);
 	}

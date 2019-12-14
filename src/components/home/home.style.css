@@ -1,0 +1,40 @@
+Jumbotron {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+p {
+	text-align: center;
+}
+
+.main-body {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.microlink {
+	max-width: 50%;
+}
+
+@media only screen and (max-width: 1000px) {
+	.main-body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	/* .microlink {
+		text-align: center;
+		margin-top: 40px;
+		margin-bottom: 10px;
+	} */
+
+	.microlink {
+		width: 100%;
+		bottom: 0;
+		text-align: center;
+		margin-top: 30px;
+	}
+}
