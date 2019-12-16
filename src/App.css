@@ -1,0 +1,14 @@
+html {
+	--primary-color: #282c34;
+	--secondary-color: #fff;
+}
+
+html[data-theme='dark'] {
+	--primary-color: rgb(255, 255, 255);
+	--secondary-color: #282c34;
+}
+
+.App {
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+}

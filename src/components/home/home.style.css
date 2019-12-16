@@ -11,9 +11,9 @@ html[data-theme='dark'] {
 .home-container {
 	position: absolute;
 	top: 0;
+	bottom: 0;
 	right: 0;
 	left: 0;
-	bottom: 0;
 	background-color: var(--secondary-color);
 	color: var(--primary-color);
 }
@@ -107,6 +107,8 @@ p {
 	flex-direction: row;
 	justify-content: space-around;
 	flex-wrap: wrap;
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
 }
 
 .microlink {
