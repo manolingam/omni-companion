@@ -83,9 +83,9 @@ class Home extends React.Component {
 					<span className='slider round' />
 				</label>
 				<Container className='container'>
-					<h4>
+					<h5>
 						Omni Companion<span> v0.2.1</span>
-					</h4>
+					</h5>
 					<p>The Official Omni Wallet companion app</p>
 					<InputGroup className='mb-3'>
 						<FormControl
