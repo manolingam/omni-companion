@@ -4,7 +4,7 @@ import Microlink from '@microlink/react';
 
 const InfoObject = ({ data, warning }) => {
 	return (
-		<div style={{ textAlign: 'center', maxWidth: '50%' }}>
+		<div style={{ textAlign: 'center', maxWidth: '70%' }}>
 			<h4>Omni Pages..</h4>
 			{data ? (
 				<div style={{ textAlign: 'center' }}>
